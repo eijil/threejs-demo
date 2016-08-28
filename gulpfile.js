@@ -137,18 +137,11 @@ function serve() {
 
 gulp.task('cleanBuild', cleanBuild);
 gulp.task('copyStatic', ['cleanBuild'], copyStatic);
-gulp.task('copyPhaser', ['copyStatic'], copyPhaser);
-gulp.task('build', ['copyPhaser'], build);
+gulp.task('build', ['copyStatic'], build);
 gulp.task('fastBuild', build);
 gulp.task('serve', ['build'], serve);
 gulp.task('watch-js', ['fastBuild'], browserSync.reload); // Rebuilds and reloads the project when executed.
-gulp.task('watch-static', ['copyPhaser'], browserSync.reload);
+gulp.task('watch-static', ['copyStatic'], browserSync.reload);
 
-/**
- * The tasks are executed in the following order:
- * 'cleanBuild' -> 'copyStatic' -> 'copyPhaser' -> 'build' -> 'serve'
- *
- * Read more about task dependencies in Gulp:
- * https://medium.com/@dave_lunny/task-dependencies-in-gulp-b885c1ab48f0
- */
+
 gulp.task('default', ['serve']);
