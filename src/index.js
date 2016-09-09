@@ -415,7 +415,7 @@ function init(){
 function render(){
 
   if (controls) controls.update();
-  camera.position.x +=1;
+  //camera.position.x +=1;
 
   renderer.render(scene, camera);
 }
